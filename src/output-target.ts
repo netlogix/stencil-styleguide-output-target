@@ -6,7 +6,7 @@ import postcss from 'rollup-plugin-postcss'
 import pl from '@pattern-lab/core'
 import fs from 'fs'
 
-const copyFiles = async () => {
+const injectUiExtend = async () => {
   fs.copyFile('source/_uiExtend/index.html', 'public/index.html', () => {})
   var dir = 'public/styleguide/js'
   if (!fs.existsSync(dir)) {
@@ -121,7 +121,7 @@ export const PatternlabOutput = (outputTargetOptions: any): OutputTargetCustom =
         )
       }
 
-      copyFiles()
+      injectUiExtend()
     }
   }
 }
