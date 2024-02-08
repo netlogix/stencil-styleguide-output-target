@@ -8,7 +8,7 @@ import fs from 'fs'
 
 const injectUiExtend = async () => {
   fs.copyFile('source/_uiExtend/index.html', 'public/index.html', () => {})
-  var dir = 'public/styleguide/js'
+  const dir = 'public/styleguide/js'
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir)
   }
@@ -16,21 +16,11 @@ const injectUiExtend = async () => {
 }
 
 //source: https://stackoverflow.com/questions/27936772/how-to-deep-merge-instead-of-shallow-merge
-/**
- * Simple object check.
- * @param item
- * @returns {boolean}
- */
-export function isObject(item) {
+export function isObject(item: any) {
   return item && typeof item === 'object' && !Array.isArray(item)
 }
 
-/**
- * Deep merge two objects.
- * @param target
- * @param sources
- */
-export function mergeDeep(target, ...sources) {
+export function mergeDeep(target: any, ...sources: any) {
   if (!sources.length) return target
   const source = sources.shift()
   if (isObject(target) && isObject(source)) {
