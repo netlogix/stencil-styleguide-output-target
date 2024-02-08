@@ -16,7 +16,14 @@
     "@pattern-lab/core": "^6.1.0",
     "fast-glob": "^3.3.2",
     "rollup": "^4.9.6",
-    "rollup-plugin-postcss": "^4.0.2"
+    "@pattern-lab/cli": "^6.1.0",
+    "@pattern-lab/engine-handlebars": "^6.1.0",
+    "@pattern-lab/starterkit-handlebars-vanilla": "^1.4.3",
+    "@pattern-lab/uikit-workshop": "^6.1.0",
+    "@stencil/core": "^4.12.0",
+    "@stencil/sass": "^3.0.7",
+    "rollup-plugin-postcss": "^4.0.2",
+    "sass": "^1.70.0"
   },
   "devDependencies": {
     "@stencil/core": "^4.12.1",
