@@ -7,10 +7,9 @@ A stencil output target which also builds Patternlab and processes scss
 To use this output target, add it to your `stencil.config.ts`:
 
 ```typescript  
-import {Config, } from '@stencil/core';
+import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
-import watchGlobs from 'rollup-plugin-watch-globs';
-import {PatternlabOutput} from "./patternlab";
+import {PatternlabOutput} from "@netlogix/stencil-styleguide-output-target";
 import postcss from "rollup-plugin-postcss";
 
 export const config: Config = {
@@ -19,7 +18,18 @@ export const config: Config = {
     watchIgnoredRegex: /dependencyGraph.json/, // important for watching for changes in patternlab
     outputTargets: [
          // ... other output targets
-         PatternlabOutput({}),
+         PatternlabOutput({
+             rollupOptions:
+                 {
+                     input: 'source/css/style.scss',
+                     plugins: [
+                         postcss({
+                             modules: true,
+                             extract: true,
+                         }),
+                     ],
+                 },
+         }),
          // ...
     ],
     devServer: {
