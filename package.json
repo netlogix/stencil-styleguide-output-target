@@ -2,7 +2,7 @@
   "name": "@netlogix/stencil-styleguide-output-target",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "A stencil output target which also builds Patternlab and processes scss\n",
+  "description": "A stencil output target which also builds Pattern Lab and processes scss",
   "main": "dist/output-target.js",
   "scripts": {
     "build": "tsc --build --clean && tsc --build",

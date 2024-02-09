@@ -1,6 +1,6 @@
 # @netlogix/stencil-styleguide-output-target
 
-A stencil output target which also builds Patternlab and processes scss
+A stencil output target which also builds Pattern Lab and processes scss
 
 ## Usage
 
@@ -73,7 +73,7 @@ rollupOutputOptions: {
       name: 'style',
       dir: './public/css',
       format: 'es'
-    },
+},
 ```
 #
 `sourceDir`: the directory which will be watched. Default: `source/**/*`
