@@ -16,7 +16,7 @@ var __asyncValues = (this && this.__asyncValues) || function (o) {
     function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PatternlabOutput = exports.mergeDeep = exports.isObject = void 0;
+exports.patternLabOutputTarget = exports.mergeDeep = exports.isObject = void 0;
 const fast_glob_1 = require("fast-glob");
 const rollup_1 = require("rollup");
 const rollup_plugin_postcss_1 = require("rollup-plugin-postcss");
@@ -54,7 +54,7 @@ function mergeDeep(target, ...sources) {
     return mergeDeep(target, ...sources);
 }
 exports.mergeDeep = mergeDeep;
-const PatternlabOutput = (outputTargetOptions) => {
+const patternLabOutputTarget = (outputTargetOptions) => {
     const defaultOutputTargetOptions = {
         rollupOptions: {
             input: 'source/scss/style.scss',
@@ -117,17 +117,17 @@ const PatternlabOutput = (outputTargetOptions) => {
                 //https://github.com/egoist/rollup-plugin-postcss/issues/160
                 //https://github.com/egoist/rollup-plugin-postcss/pull/276
                 if (!defaultOutputTargetOptions.rollupOptions.length) {
-                    const rollupAppBuild = yield (0, rollup_1.rollup)(defaultOutputTargetOptions.rollupOptions);
-                    yield rollupAppBuild.write(defaultOutputTargetOptions.rollupOutputOptions);
+                    const rollupBuild = yield (0, rollup_1.rollup)(defaultOutputTargetOptions.rollupOptions);
+                    yield rollupBuild.write(defaultOutputTargetOptions.rollupOutputOptions);
                 }
                 else {
                     yield Promise.all(defaultOutputTargetOptions.rollupOptions.map((options, key) => __awaiter(this, void 0, void 0, function* () {
-                        const rollupAppBuild = yield (0, rollup_1.rollup)(options);
+                        const rollupBuild = yield (0, rollup_1.rollup)(options);
                         if (defaultOutputTargetOptions.rollupOutputOptions[key]) {
-                            yield rollupAppBuild.write(defaultOutputTargetOptions.rollupOutputOptions[key]);
+                            yield rollupBuild.write(defaultOutputTargetOptions.rollupOutputOptions[key]);
                         }
                         else {
-                            yield rollupAppBuild.write(defaultOutputTargetOptions.rollupOutputOptions);
+                            yield rollupBuild.write(defaultOutputTargetOptions.rollupOutputOptions);
                         }
                     })));
                 }
@@ -136,4 +136,4 @@ const PatternlabOutput = (outputTargetOptions) => {
         }
     };
 };
-exports.PatternlabOutput = PatternlabOutput;
+exports.patternLabOutputTarget = patternLabOutputTarget;

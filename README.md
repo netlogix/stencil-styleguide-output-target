@@ -9,7 +9,7 @@ To use this output target, add it to your `stencil.config.ts`:
 ```typescript  
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
-import {PatternlabOutput} from "@netlogix/stencil-styleguide-output-target";
+import { patternLabOutputTarget } from "@netlogix/stencil-styleguide-output-target";
 import postcss from "rollup-plugin-postcss";
 
 export const config: Config = {
@@ -18,7 +18,7 @@ export const config: Config = {
     watchIgnoredRegex: /dependencyGraph.json/, // important for watching for changes in patternlab
     outputTargets: [
          // ... other output targets
-         PatternlabOutput({
+         patternLabOutputTarget({
              rollupOptions:
                  {
                      input: 'source/css/style.scss',

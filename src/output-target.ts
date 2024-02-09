@@ -36,7 +36,7 @@ export function mergeDeep(target: any, ...sources: any) {
   return mergeDeep(target, ...sources)
 }
 
-export const PatternlabOutput = (outputTargetOptions: any): OutputTargetCustom => {
+export const patternLabOutputTarget = (outputTargetOptions: any): OutputTargetCustom => {
   const defaultOutputTargetOptions: any = {
     rollupOptions: {
       input: 'source/scss/style.scss',
@@ -88,16 +88,16 @@ export const PatternlabOutput = (outputTargetOptions: any): OutputTargetCustom =
       //https://github.com/egoist/rollup-plugin-postcss/issues/160
       //https://github.com/egoist/rollup-plugin-postcss/pull/276
       if (!defaultOutputTargetOptions.rollupOptions.length) {
-        const rollupAppBuild = await rollup(defaultOutputTargetOptions.rollupOptions)
-        await rollupAppBuild.write(defaultOutputTargetOptions.rollupOutputOptions)
+        const rollupBuild = await rollup(defaultOutputTargetOptions.rollupOptions)
+        await rollupBuild.write(defaultOutputTargetOptions.rollupOutputOptions)
       } else {
         await Promise.all(
           defaultOutputTargetOptions.rollupOptions.map(async (options, key) => {
-            const rollupAppBuild = await rollup(options)
+            const rollupBuild = await rollup(options)
             if (defaultOutputTargetOptions.rollupOutputOptions[key]) {
-              await rollupAppBuild.write(defaultOutputTargetOptions.rollupOutputOptions[key])
+              await rollupBuild.write(defaultOutputTargetOptions.rollupOutputOptions[key])
             } else {
-              await rollupAppBuild.write(defaultOutputTargetOptions.rollupOutputOptions)
+              await rollupBuild.write(defaultOutputTargetOptions.rollupOutputOptions)
             }
           })
         )
