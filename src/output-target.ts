@@ -63,14 +63,6 @@ export const PatternlabOutput = (outputTargetOptions: any): OutputTargetCustom =
 
     generator: async function (config: Config, compilerCtx: CompilerCtx, _buildCtx: BuildCtx) {
       if (!_buildCtx.isRebuild) {
-        try {
-          this.patternlabConfig = require('./patternlab-config-build.json')
-        } catch (e) {
-          this.patternlabConfig = require('./patternlab-config.json')
-        }
-        this.patternLab = pl(this.patternlabConfig)
-      }
-      if (_buildCtx.buildId == 1) {
         this.patternlabConfig = require('./patternlab-config.json')
         this.patternLab = pl(this.patternlabConfig)
       }

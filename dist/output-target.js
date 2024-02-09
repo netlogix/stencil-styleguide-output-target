@@ -22,29 +22,19 @@ const rollup_1 = require("rollup");
 const rollup_plugin_postcss_1 = require("rollup-plugin-postcss");
 const core_1 = require("@pattern-lab/core");
 const fs_1 = require("fs");
-const copyFiles = () => __awaiter(void 0, void 0, void 0, function* () {
+const injectUiExtend = () => __awaiter(void 0, void 0, void 0, function* () {
     fs_1.default.copyFile('source/_uiExtend/index.html', 'public/index.html', () => { });
-    var dir = 'public/styleguide/js';
+    const dir = 'public/styleguide/js';
     if (!fs_1.default.existsSync(dir)) {
         fs_1.default.mkdirSync(dir);
     }
     fs_1.default.copyFile('source/_uiExtend/js/nlx-ui-extend.js', dir + '/nlx-ui-extend.js', () => { });
 });
 //source: https://stackoverflow.com/questions/27936772/how-to-deep-merge-instead-of-shallow-merge
-/**
- * Simple object check.
- * @param item
- * @returns {boolean}
- */
 function isObject(item) {
     return item && typeof item === 'object' && !Array.isArray(item);
 }
 exports.isObject = isObject;
-/**
- * Deep merge two objects.
- * @param target
- * @param sources
- */
 function mergeDeep(target, ...sources) {
     if (!sources.length)
         return target;
@@ -91,15 +81,6 @@ const PatternlabOutput = (outputTargetOptions) => {
             var _a, e_1, _b, _c;
             return __awaiter(this, void 0, void 0, function* () {
                 if (!_buildCtx.isRebuild) {
-                    try {
-                        this.patternlabConfig = require('./patternlab-config-build.json');
-                    }
-                    catch (e) {
-                        this.patternlabConfig = require('./patternlab-config.json');
-                    }
-                    this.patternLab = (0, core_1.default)(this.patternlabConfig);
-                }
-                if (_buildCtx.buildId == 1) {
                     this.patternlabConfig = require('./patternlab-config.json');
                     this.patternLab = (0, core_1.default)(this.patternlabConfig);
                 }
@@ -150,7 +131,7 @@ const PatternlabOutput = (outputTargetOptions) => {
                         }
                     })));
                 }
-                copyFiles();
+                injectUiExtend();
             });
         }
     };
