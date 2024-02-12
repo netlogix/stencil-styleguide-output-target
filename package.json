@@ -24,7 +24,7 @@
     "rollup-plugin-postcss": "^4.0.2"
   },
   "devDependencies": {
-    "@stencil/core": "^4.12.1",
+    "@stencil/core": "^4.12.2",
     "@types/node": "^18.19.14",
     "prettier": "^3.2.5",
     "typescript": "^5.1"
