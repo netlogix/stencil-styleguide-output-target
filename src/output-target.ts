@@ -71,7 +71,7 @@ export const patternLabOutputTarget = (outputTargetOptions: any): PatternLabOutp
 
     generator: async function (config: Config, compilerCtx: CompilerCtx, _buildCtx: BuildCtx) {
       if (!_buildCtx.isRebuild) {
-        this.patternlabConfig = require('./patternlab-config.json')
+        this.patternlabConfig = JSON.parse(fs.readFileSync('patternlab-config.json', 'utf8'))
         this.patternLab = pl(this.patternlabConfig)
       }
 
