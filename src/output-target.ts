@@ -3,6 +3,7 @@ import {Config} from '@stencil/core'
 import {Entry, stream} from 'fast-glob'
 import {rollup} from 'rollup'
 import postcss from 'rollup-plugin-postcss'
+// @ts-expect-error
 import pl from '@pattern-lab/core'
 import fs from 'fs'
 
@@ -36,7 +37,12 @@ export function mergeDeep(target: any, ...sources: any) {
   return mergeDeep(target, ...sources)
 }
 
-export const patternLabOutputTarget = (outputTargetOptions: any): OutputTargetCustom => {
+interface PatternLabOutputTarget extends OutputTargetCustom{
+  patternlabConfig: any
+  patternLab: any
+}
+
+export const patternLabOutputTarget = (outputTargetOptions: any): PatternLabOutputTarget => {
   const defaultOutputTargetOptions: any = {
     rollupOptions: {
       input: 'source/scss/style.scss',
@@ -59,6 +65,8 @@ export const patternLabOutputTarget = (outputTargetOptions: any): OutputTargetCu
     type: 'custom',
     name: 'patternlab-output',
 
+    patternlabConfig: {},
+    patternLab: {},
     validate(_config: Config) {},
 
     generator: async function (config: Config, compilerCtx: CompilerCtx, _buildCtx: BuildCtx) {
@@ -92,7 +100,7 @@ export const patternLabOutputTarget = (outputTargetOptions: any): OutputTargetCu
         await rollupBuild.write(defaultOutputTargetOptions.rollupOutputOptions)
       } else {
         await Promise.all(
-          defaultOutputTargetOptions.rollupOptions.map(async (options, key) => {
+          defaultOutputTargetOptions.rollupOptions.map(async (options: any, key: any) => {
             const rollupBuild = await rollup(options)
             if (defaultOutputTargetOptions.rollupOutputOptions[key]) {
               await rollupBuild.write(defaultOutputTargetOptions.rollupOutputOptions[key])
