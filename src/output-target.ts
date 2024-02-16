@@ -3,7 +3,7 @@ import {Config} from '@stencil/core'
 import {Entry, stream} from 'fast-glob'
 import {rollup} from 'rollup'
 import postcss from 'rollup-plugin-postcss'
-// @ts-expect-error
+// @ts-expect-error: No type declarations available.
 import pl from '@pattern-lab/core'
 import fs from 'fs'
 
@@ -37,7 +37,7 @@ export function mergeDeep(target: any, ...sources: any) {
   return mergeDeep(target, ...sources)
 }
 
-interface PatternLabOutputTarget extends OutputTargetCustom{
+interface PatternLabOutputTarget extends OutputTargetCustom {
   patternlabConfig: any
   patternLab: any
 }
