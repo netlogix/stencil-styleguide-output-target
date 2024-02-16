@@ -5,8 +5,8 @@
   "description": "A stencil output target which also builds Pattern Lab and processes scss",
   "main": "dist/output-target.js",
   "scripts": {
-    "build": "tsc --build --clean && tsc --build",
-    "build:dev": "tsc --build --clean && tsc --build --watch",
+    "build": "rollup --config rollup.config.output-target.ts --configPlugin typescript",
+    "build:dev": "rollup -c -w",
     "format": "prettier --write '**/*.ts'",
     "version": "npm run build"
   },
@@ -27,7 +27,12 @@
     "@stencil/core": "^4.12.1",
     "@types/node": "^18.19.14",
     "prettier": "^3.2.5",
-    "typescript": "^5.1"
+    "typescript": "^5.1",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "tslib": "^2.6.2"
   },
   "engines": {
     "node": ">=20.0.0",
